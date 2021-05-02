@@ -8,7 +8,7 @@ const removeBlanks = require('../../lib/remove_blank_fields')
 const requireToken = passport.authenticate('bearer', { session: false })
 const router = express.Router()
 
-router.get('/list', requireToken, (req, res, next) => {
+router.get('/lists', requireToken, (req, res, next) => {
   List.find()
     .then(list => {
       return list.map(list => list.toObject())
@@ -18,24 +18,25 @@ router.get('/list', requireToken, (req, res, next) => {
     .catch(next)
 })
 
-router.get('/list/:id', requireToken, (req, res, next) => {
+router.get('/lists/:id', requireToken, (req, res, next) => {
   List.findById(req.params.id)
     .then(handle404)
     .then(list => res.status(200).json({ list: list.toObject() }))
     .catch(next)
 })
 
-router.post('/list', requireToken, (req, res, next) => {
-  req.body.list.owner = req.user.id
+router.post('/lists', requireToken, (req, res, next) => {
+  const list = req.body.list
+  list.owner = req.user.id
 
-  List.create(req.body.list)
+  List.create(list)
     .then(list => {
-      res.status(201).json({ list: list.toObject() })
+      res.status(201).json({ list })
     })
     .catch(next)
 })
 
-router.patch('/list/:id', requireToken, removeBlanks, (req, res, next) => {
+router.patch('/lists/:id', requireToken, removeBlanks, (req, res, next) => {
   delete req.body.list.owner
 
   List.findById(req.params.id)
@@ -48,7 +49,7 @@ router.patch('/list/:id', requireToken, removeBlanks, (req, res, next) => {
     .catch(next)
 })
 
-router.delete('/list/:id', requireToken, (req, res, next) => {
+router.delete('/lists/:id', requireToken, (req, res, next) => {
   List.findById(req.params.id)
     .then(handle404)
     .then(list => {
