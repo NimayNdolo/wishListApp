@@ -29,7 +29,7 @@ router.post('/lists', requireToken, (req, res, next) => {
   const list = req.body.list
   list.owner = req.user.id
 
-  List.create(list)
+  List.create(req.body.list)
     .then(list => {
       res.status(201).json({ list })
     })
