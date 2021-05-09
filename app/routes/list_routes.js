@@ -9,12 +9,12 @@ const requireToken = passport.authenticate('bearer', { session: false })
 const router = express.Router()
 
 router.get('/lists', requireToken, (req, res, next) => {
-  List.find()
+  const id = req.user.id
+  List.find({ owner: id })
     .then(list => {
       return list.map(list => list.toObject())
     })
     .then(list => res.status(200).json({ list: list }))
-
     .catch(next)
 })
 
