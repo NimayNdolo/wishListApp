@@ -1,6 +1,6 @@
 ## WISHLIST app
 
-[evening-fortress-68266.herokuapp.com/](url)
+[https://evening-fortress-68266.herokuapp.com/](url)
 
 ## SUMMARY
 
