@@ -1,10 +1,12 @@
-<strong>WISHLIST app</strong>
+## WISHLIST app
 
-<strong>SUMMARY</strong>
+[evening-fortress-68266.herokuapp.com/](url)
 
--- At the bare bones of it, this is a wishlist application. The first build will be focused on the sole experience of an individual user.
+## SUMMARY
 
-<strong>USER STORIES</strong>
+-- At its bare bones, this is a wishlist application. The first build will be focused on the sole experience of an individual user.
+
+## USER STORIES
 
 My user will be able to create a new account via sign-up form.
 
@@ -27,4 +29,6 @@ My user will be able to update list items.
 My user will be able to sign out if they choose.
 
 
-<strong>DEPLOYED APP</strong>
+## ERD
+
+![ERD Diagram](https://user-images.githubusercontent.com/15839929/117576574-7c3e6d80-b0b4-11eb-93cd-eea666723fe1.jpg)
