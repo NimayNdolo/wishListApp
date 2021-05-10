@@ -11,8 +11,8 @@ const router = express.Router()
 router.get('/lists', requireToken, (req, res, next) => {
   const id = req.user.id
   List.find({ owner: id })
-    .then(list => {
-      return list.map(list => list.toObject())
+    .then(lists => {
+      return lists.map(list => list.toObject())
     })
     .then(list => res.status(200).json({ list: list }))
     .catch(next)
