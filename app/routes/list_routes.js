@@ -28,10 +28,13 @@ router.get('/lists/:id', requireToken, (req, res, next) => {
 router.post('/lists', requireToken, (req, res, next) => {
   const list = req.body.list
   list.owner = req.user.id
+  // const comment = req.body.list.comments
+  // comment.owner = req.user.id
 
   List.create(req.body.list)
     .then(list => {
       res.status(201).json({ list })
+      // res.status(201).json({ list, comment })???
     })
     .catch(next)
 })

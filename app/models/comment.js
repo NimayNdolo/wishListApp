@@ -1,12 +1,10 @@
 const mongoose = require('mongoose')
-const commentSchema = require('./comment')
 
-const listSchema = new mongoose.Schema({
-  item: {
+const commentSchema = new mongoose.Schema({
+  content: {
     type: String,
     required: true
   },
-  comments: [commentSchema],
   owner: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
@@ -16,4 +14,4 @@ const listSchema = new mongoose.Schema({
   timestamps: true
 })
 
-module.exports = mongoose.model('List', listSchema)
+module.exports = commentSchema
